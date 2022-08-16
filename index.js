@@ -1,22 +1,22 @@
-import express from 'express'
-import bodyParser from 'body-parser'
-import mongoose from 'mongoose'
-import dotenv from 'dotenv'
+import express from "express";
+import bodyParser from "body-parser";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+import AuthRoute from './Routes/AuthRoute.js'
 
-const app = express()
-app.use(bodyParser.json({ limit: '30mb', extended: true }))
-app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
+const app = express();
 
-dotenv.config()
+// middleware
+app.use(bodyParser.json({ limit: "30mb", extended: true }));
+app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 
-mongoose
-  .connect(process.env.MONGO_DB, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+dotenv.config();
+
+mongoose.connect(process.env.MONGO_DB).then(() =>
+  app.listen(process.env.PORT, () => {
+    console.log("Listening on port: ", process.env.PORT);
   })
-  .then(() =>
-    app.listen(process.env.PORT, () =>
-      console.log(`listening at ${process.env.PORT}`),
-    ),
-  )
-  .catch((error) => console.log(error))
+);
+
+// use routes
+app.use('/auth', AuthRoute)
