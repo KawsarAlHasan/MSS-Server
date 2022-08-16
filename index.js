@@ -5,6 +5,7 @@ import dotenv from 'dotenv'
 
 // Routes
 import AuthRoute from './routes/AuthRoute.js'
+import UserRoute from './routes/UserRoute.js'
 const app = express()
 
 // Middleware
@@ -27,3 +28,4 @@ mongoose
 
 // usage of routes
 app.use('/auth', AuthRoute)
+app.use('/user', UserRoute)
