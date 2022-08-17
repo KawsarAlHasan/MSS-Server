@@ -1,9 +1,18 @@
 import express from 'express'
+import {
+  createPost,
+  deletePost,
+  getPost,
+  likePost,
+  UpdatePost,
+} from '../controllers/PostController.js'
 
 const router = express.Router()
 
-router.get('/', async (req, res) => {
-  res.send('Post Route')
-})
+router.post('/', createPost)
+router.get('/:id', getPost)
+router.put('/:id', UpdatePost)
+router.delete('/:id', deletePost)
+router.put('/:id/like', likePost)
 
 export default router
