@@ -3,6 +3,7 @@ import {
   createPost,
   deletePost,
   getPost,
+  getTimelinePosts,
   likePost,
   UpdatePost,
 } from '../controllers/PostController.js'
@@ -14,5 +15,6 @@ router.get('/:id', getPost)
 router.put('/:id', UpdatePost)
 router.delete('/:id', deletePost)
 router.put('/:id/like', likePost)
+router.get('/:id/timeline', getTimelinePosts)
 
 export default router
