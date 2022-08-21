@@ -10,8 +10,12 @@ import UserRoute from "./routes/UserRoute.js";
 import PostRoute from "./routes/PostRoute.js";
 import ChatRoute from "./routes/ChatRoute.js";
 import MessageRoute from "./routes/MessageRoute.js";
+import UploadRoute from "./routes/UploadRoute.js";
 const app = express();
 
+// to serve image for public
+app.use(express.static("public"));
+app.use("/images", express.static("images"));
 // Middleware
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
@@ -36,3 +40,4 @@ app.use("/user", UserRoute);
 app.use("/post", PostRoute);
 app.use("/chat", ChatRoute);
 app.use("/message", MessageRoute);
+app.use("/upload", UploadRoute);
