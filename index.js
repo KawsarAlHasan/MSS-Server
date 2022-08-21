@@ -12,25 +12,8 @@ import ChatRoute from "./routes/ChatRoute.js";
 import MessageRoute from "./routes/MessageRoute.js";
 import UploadRoute from "./routes/UploadRoute.js";
 const app = express();
-const corsConfig = {
-  origin: "https://enigmatic-ocean-28315.herokuapp.com",
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE"],
-};
-app.use(cors(corsConfig));
-app.options("https://enigmatic-ocean-28315.herokuapp.com", cors(corsConfig));
 
-app.use(function (req, res, next) {
-  res.header(
-    "Access-Control-Allow-Origin",
-    "https://enigmatic-ocean-28315.herokuapp.com"
-  );
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept,authorization"
-  );
-  next();
-});
+app.use(cors({ origin: "https://enigmatic-ocean-28315.herokuapp.com" }));
 
 // to serve image for public
 app.use(express.static("public"));
