@@ -12,6 +12,7 @@ import ChatRoute from "./routes/ChatRoute.js";
 import MessageRoute from "./routes/MessageRoute.js";
 import UploadRoute from "./routes/UploadRoute.js";
 const app = express();
+app.use(cors({ origin: true, optionsSuccessStatus: 200, credentials: true }));
 
 // to serve image for public
 app.use(express.static("public"));
@@ -19,7 +20,6 @@ app.use("/images", express.static("images"));
 // Middleware
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
-app.use(cors({ origin: true, optionsSuccessStatus: 200, credentials: true }));
 dotenv.config();
 
 mongoose
