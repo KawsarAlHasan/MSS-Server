@@ -13,7 +13,7 @@ import MessageRoute from "./routes/MessageRoute.js";
 import UploadRoute from "./routes/UploadRoute.js";
 const app = express();
 const corsConfig = {
-  origin: "*",
+  origin: "https://enigmatic-ocean-28315.herokuapp.com/",
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE"],
 };
