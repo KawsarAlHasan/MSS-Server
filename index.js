@@ -18,10 +18,13 @@ const corsConfig = {
   methods: ["GET", "POST", "PUT", "DELETE"],
 };
 app.use(cors(corsConfig));
-app.options("*", cors(corsConfig));
+app.options("https://enigmatic-ocean-28315.herokuapp.com/", cors(corsConfig));
 
 app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Origin",
+    "https://enigmatic-ocean-28315.herokuapp.com/"
+  );
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept,authorization"
