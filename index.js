@@ -12,7 +12,22 @@ import ChatRoute from "./routes/ChatRoute.js";
 import MessageRoute from "./routes/MessageRoute.js";
 import UploadRoute from "./routes/UploadRoute.js";
 const app = express();
-app.use(cors({ origin: true, optionsSuccessStatus: 200, credentials: true }));
+const corsConfig = {
+  origin: "*",
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE"],
+};
+app.use(cors(corsConfig));
+app.options("*", cors(corsConfig));
+
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept,authorization"
+  );
+  next();
+});
 
 // to serve image for public
 app.use(express.static("public"));
