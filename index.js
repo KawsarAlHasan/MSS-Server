@@ -13,17 +13,17 @@ import MessageRoute from "./routes/MessageRoute.js";
 import UploadRoute from "./routes/UploadRoute.js";
 const app = express();
 const corsConfig = {
-  origin: "https://enigmatic-ocean-28315.herokuapp.com/",
+  origin: "https://enigmatic-ocean-28315.herokuapp.com",
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE"],
 };
 app.use(cors(corsConfig));
-app.options("https://enigmatic-ocean-28315.herokuapp.com/", cors(corsConfig));
+app.options("https://enigmatic-ocean-28315.herokuapp.com", cors(corsConfig));
 
 app.use(function (req, res, next) {
   res.header(
     "Access-Control-Allow-Origin",
-    "https://enigmatic-ocean-28315.herokuapp.com/"
+    "https://enigmatic-ocean-28315.herokuapp.com"
   );
   res.header(
     "Access-Control-Allow-Headers",
