@@ -12,16 +12,17 @@ import ChatRoute from "./routes/ChatRoute.js";
 import MessageRoute from "./routes/MessageRoute.js";
 import UploadRoute from "./routes/UploadRoute.js";
 const app = express();
+
 const corsConfig = {
-  origin: "https://adanannaba.web.app",
+  origin: "*",
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE"],
 };
 app.use(cors(corsConfig));
-app.options("https://adanannaba.web.app", cors(corsConfig));
+app.options("*", cors(corsConfig));
 
 app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "https://adanannaba.web.app");
+  res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept,authorization"
