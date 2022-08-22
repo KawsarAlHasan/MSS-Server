@@ -39,15 +39,14 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 dotenv.config();
 
 mongoose
-  .connect(process.env.MONGO_DB, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() =>
-    app.listen(process.env.PORT, () =>
-      console.log(`listening at ${process.env.PORT}`)
-    )
+  .connect(
+    "mongodb+srv://sc_admin:wjMklKlngzdsUU1E@cluster0.9tgja.mongodb.net/Social-Community-MSS?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
   )
+  .then(() => app.listen(5000, () => console.log(`listening at 5000`)))
   .catch((error) => console.log(error));
 
 // usage of routes
